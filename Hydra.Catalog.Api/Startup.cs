@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Hydra.Catalog.Api.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Hydra.Catalog.Api
 {
@@ -31,9 +25,12 @@ namespace Hydra.Catalog.Api
                 options.AddPolicy("Hydra_Admin", policy => {
                     policy.WithOrigins("http://localhost:4200")
                     .AllowAnyHeader()
-                    .AllowAnyMethod();
+                    .AllowAnyMethod()
+                    .AllowCredentials();
                 });
             });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,8 +52,16 @@ namespace Hydra.Catalog.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<PriceHub>("/price");
             });
 
+            //Signal Route Configuration
+
+            // app.UseSignalR(routes =>
+            // {
+            //     //routes.MapControllers();
+            //     routes.MapHub<CatalogHub>("/priceUpdated");
+            // });
         }
     }
 }
