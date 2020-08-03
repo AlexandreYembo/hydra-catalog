@@ -4,6 +4,10 @@
     <ProjectReference Include="..\Hydra.Catalog.Core\Hydra.Catalog.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="mediatr" Version="8.1.0" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>

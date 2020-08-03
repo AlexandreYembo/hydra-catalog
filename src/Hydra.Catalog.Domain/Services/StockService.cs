@@ -1,5 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using Hydra.Catalog.Core.Bus;
+using Hydra.Catalog.Domain.Events;
 using Hydra.Catalog.Domain.Interfaces;
 using Hydra.Catalog.Domain.Interfaces.Services;
 
@@ -15,9 +17,12 @@ namespace Hydra.Catalog.Domain.Services
     {
         private readonly IProductRepository _productRepository;
 
-        public StockService(IProductRepository productRepository)
+        private readonly IMediatorHandler _bus;
+
+        public StockService(IProductRepository productRepository, IMediatorHandler bus)
         {
-            _productRepository = productRepository;    
+            _productRepository = productRepository;
+            _bus = bus;    
         }
 
         public async Task<bool> AddStock(Guid productId, int qty)
@@ -41,6 +46,11 @@ namespace Hydra.Catalog.Domain.Services
             if(!product.HasStock(qty)) return false;
 
             product.RemoveStock(qty);
+
+            if(product.Qty < 10)
+            {
+                await _bus.PublishEvent(new ProductLowStockEvent(product.Id, product.Qty));
+            }
 
             _productRepository.Update(product);
             return await _productRepository.UnitOfWork.Commit();
