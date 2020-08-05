@@ -1,0 +1,3 @@
+[submodule "hydra-core"]
+	path = hydra-core
+	url = https://github.com/AlexandreYembo/hydra-core

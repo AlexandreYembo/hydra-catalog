@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hydra.Catalog.Core.Data;
+using Hydra.Core.Data;
 using Hydra.Catalog.Domain.Interfaces;
 using Hydra.Catalog.Entities.Models;
 using Microsoft.EntityFrameworkCore;

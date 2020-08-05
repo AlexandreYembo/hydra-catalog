@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Hydra.Catalog.Core\Hydra.Catalog.Core.csproj" />
+    <PackageReference Include="mediatr" Version="8.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="mediatr" Version="8.1.0" />
+    <ProjectReference Include="..\..\hydra-core\Hydra.Core\Hydra.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

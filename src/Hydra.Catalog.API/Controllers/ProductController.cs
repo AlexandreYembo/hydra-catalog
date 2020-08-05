@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Hydra.Catalog.API.Models;
-using Hydra.Catalog.Core.DomainObjects;
+using Hydra.Core.DomainObjects;
 using Hydra.Catalog.Domain.Interfaces;
 using Hydra.Catalog.Domain.Interfaces.Services;
 using Hydra.Catalog.Entities.Models;

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Hydra.Catalog.Core.DomainObjects;
+using Hydra.Core.DomainObjects;
 
 namespace Hydra.Catalog.Entities.Models
 {

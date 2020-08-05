@@ -1,5 +1,5 @@
 using System;
-using Hydra.Catalog.Core.DomainObjects;
+using Hydra.Core.DomainObjects;
 using Hydra.Catalog.Domain.ValueObjects;
 
 namespace Hydra.Catalog.Entities.Models

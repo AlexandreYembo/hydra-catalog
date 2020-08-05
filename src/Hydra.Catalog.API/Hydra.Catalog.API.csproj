@@ -3,7 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Hydra.Catalog.Data\Hydra.Catalog.Data.csproj" />
     <ProjectReference Include="..\Hydra.Catalog.Domain\Hydra.Catalog.Domain.csproj" />
-    <ProjectReference Include="..\Hydra.Catalog.Core\Hydra.Catalog.Core.csproj" />
+    <ProjectReference Include="..\..\hydra-core\Hydra.Core\Hydra.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

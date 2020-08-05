@@ -1,5 +1,5 @@
 using System;
-using Hydra.Catalog.Core.DomainObjects;
+using Hydra.Core.DomainObjects;
 
 namespace Hydra.Catalog.Domain.Events
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Hydra.Catalog.Core.Data;
+using Hydra.Core.Data;
 using Hydra.Catalog.Entities.Models;
 
 namespace Hydra.Catalog.Domain.Interfaces

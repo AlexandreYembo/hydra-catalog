@@ -1,5 +1,5 @@
 using System;
-using Hydra.Catalog.Core.Bus;
+using Hydra.Core.Bus;
 using Hydra.Catalog.Data;
 using Hydra.Catalog.Data.Repository;
 using Hydra.Catalog.Domain.Events;
