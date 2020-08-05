@@ -65,3 +65,4 @@ typings/
 
 bin/
 obj/
+*.v2
