@@ -14,7 +14,8 @@ namespace Hydra.Catalog.Data
         //It is a kind of factory that will be configure the context on Startup.cs
         public CatalogContext(DbContextOptions<CatalogContext> options) : base(options)
         {
-
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
         public DbSet<Product> Products {get; set; }

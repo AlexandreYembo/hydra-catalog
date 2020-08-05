@@ -8,6 +8,7 @@ namespace Hydra.Catalog.Domain.Events
 {
     /// <summary>
     /// Class of Manipulation of event
+    /// One Handler for one Event
     /// </summary>
     public class ProductEventHandler : INotificationHandler<ProductLowStockEvent>
     {
@@ -30,9 +31,9 @@ namespace Hydra.Catalog.Domain.Events
         {
             var product = await _productRepository.GetProductById(message.AggregateId);
 
-            //TODO: Implement an email service;
+            //TODO: Implement an email service (Infrastructure Layer);
 
-            //TODO: Implement a queue process - RabbitMQ
+            //TODO: Implement a queue process - RabbitMQ (Infrastructure Layer);
 
             //TODO: You can implement more repository if necessary.
         }

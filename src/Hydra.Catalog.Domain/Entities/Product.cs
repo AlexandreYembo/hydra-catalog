@@ -20,6 +20,8 @@ namespace Hydra.Catalog.Entities.Models
 
         public Dimensions Dimensions { get; private set; }
 
+
+        protected Product() {  }
         public Product(string name, string description, bool active, decimal price, Guid categoryId, DateTime createdDate, string image, Dimensions dimensions)
         {
             CategoryId = categoryId;
