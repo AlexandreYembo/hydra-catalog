@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hydra.Catalog.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ProductController : ControllerBase, IDisposable
     {
         private readonly IProductRepository _productRepository;
@@ -25,12 +27,16 @@ namespace Hydra.Catalog.API.Controllers
         }
 
         [HttpGet]
+        [Route("{id}")]
         public async Task<ProductDto> GetProductById(Guid id) => 
             _mapper.Map<ProductDto>(await _productRepository.GetProductById(id));
 
         [HttpGet]
-        public async Task<IEnumerable<ProductDto>> GetAllProducts() => 
-            _mapper.Map<IEnumerable<ProductDto>>(await _productRepository.GetAllProducts());
+        [Route("all")]
+        public async Task<IEnumerable<ProductDto>> GetAllProducts(){
+            var products = await _productRepository.GetAllProducts();
+            return _mapper.Map<IEnumerable<ProductDto>>(products);
+        } 
 
         [HttpGet]
         public async Task<IEnumerable<ProductDto>> GetProductByCategory(int code) => 
@@ -60,6 +66,7 @@ namespace Hydra.Catalog.API.Controllers
         }
 
         [HttpPut]
+        [Route("{productId}/{qty}/remove")]
         public async Task<ProductDto> RemoveStock(Guid productId, int quantity) 
         {
             if(!_stockService.RemoveStock(productId, quantity).Result)
@@ -68,7 +75,8 @@ namespace Hydra.Catalog.API.Controllers
            return _mapper.Map<ProductDto>(await _productRepository.GetProductById(productId));
         }
 
-         [HttpPut]
+        [HttpPut]
+        [Route("{productId}/{qty}/add")]
         public async Task<ProductDto> AddStock(Guid productId, int quantity) 
         {
             if(!_stockService.AddStock(productId, quantity).Result)

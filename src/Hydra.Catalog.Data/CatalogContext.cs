@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Hydra.Core.Data;
 using Hydra.Catalog.Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Hydra.Core.Messages;
 
 namespace Hydra.Catalog.Data
 {
@@ -12,11 +13,7 @@ namespace Hydra.Catalog.Data
 
         //DbContextOptions used for entity framework core in dotnet core.
         //It is a kind of factory that will be configure the context on Startup.cs
-        public CatalogContext(DbContextOptions<CatalogContext> options) : base(options)
-        {
-            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            ChangeTracker.AutoDetectChangesEnabled = false;
-        }
+        public CatalogContext(DbContextOptions<CatalogContext> options) : base(options){ }
 
         public DbSet<Product> Products {get; set; }
         public DbSet<Category> Categories {get; set; }
@@ -27,9 +24,13 @@ namespace Hydra.Catalog.Data
                 e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
                 property.SetColumnType("varchar(100)"); // avoid do create any column NVarchar(MAX)
 
+
+            modelBuilder.Ignore<Event>();
                 //Does not need to add map for each element, new EF supports
                 //It will find all entities and mapping defined on DbSet<TEntity> via reflection
-                modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogContext).Assembly);
+            
+            base.OnModelCreating(modelBuilder);
         }
 
 

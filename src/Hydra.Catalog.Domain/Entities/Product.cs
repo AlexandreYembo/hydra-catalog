@@ -29,7 +29,7 @@ namespace Hydra.Catalog.Entities.Models
             Description = description;
             Active = active;
             Price = price;
-            CreatedDate = createdDate;
+            CreatedDate = DateTime.Now;
             Image = image;
             Dimensions = dimensions;
 
@@ -81,7 +81,7 @@ namespace Hydra.Catalog.Entities.Models
         {
             AssertionConcern.ValidateEmpty(Name, "The field product name can't be empty");
             AssertionConcern.ValidateEmpty(Description, "The field product description can't be empty");
-            AssertionConcern.ValidateDifferent(CategoryId, Guid.Empty, "The field category Id can't be empty");
+            AssertionConcern.ValidateEqual(CategoryId, Guid.Empty, "The field category Id can't be empty");
             AssertionConcern.ValidateNotEqOrLessThanMin(Price, 0, "The field price can't be equal or less than 0");
             AssertionConcern.ValidateEmpty(Image, "The field image can't be empty");
         }

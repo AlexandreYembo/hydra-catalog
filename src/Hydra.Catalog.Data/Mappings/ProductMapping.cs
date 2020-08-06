@@ -13,11 +13,12 @@ namespace Hydra.Catalog.Data.Mappings
 
             builder.Property(c => c.Name)
                 .IsRequired()
-                .HasColumnType("varchar(250");
+                .HasColumnType("varchar(250)");
             
             builder.Property(c => c.Name)
                 .IsRequired()
-                .HasColumnType("varchar(250");
+                .HasColumnType("varchar(250)");
+           
             
             builder.Property(c => c.Description)
             .IsRequired()
@@ -25,7 +26,7 @@ namespace Hydra.Catalog.Data.Mappings
 
             builder.Property(c => c.Image)
             .IsRequired()
-            .HasColumnType("varchar(250");
+            .HasColumnType("varchar(250)");
 
             //transform the attribute inside Dimension class in columns for Product table.
             builder.OwnsOne(c => c.Dimensions, cm => 

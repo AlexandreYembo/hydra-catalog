@@ -44,7 +44,12 @@ namespace Hydra.Catalog.Data.Repository
 
         public async Task<Product> GetProductById(Guid id)
         {
-            return await _context.Products.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+            //return await _context.Products.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+            var product = await _context.Products.FindAsync(id);
+              if(product != null)
+                await _context.Entry(product)
+                    .Reference(c => c.Category).LoadAsync();
+            return product;
         }
 
         public void Insert(Product product)
