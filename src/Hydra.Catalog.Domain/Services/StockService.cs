@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using Hydra.Core.Bus;
 using Hydra.Catalog.Domain.Events;
 using Hydra.Catalog.Domain.Interfaces;
 using Hydra.Catalog.Domain.Interfaces.Services;
+using Hydra.Core.Communication.Mediator;
 
 namespace Hydra.Catalog.Domain.Services
 {

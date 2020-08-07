@@ -1,5 +1,3 @@
-using System;
-using Hydra.Core.Bus;
 using Hydra.Catalog.Data;
 using Hydra.Catalog.Data.Repository;
 using Hydra.Catalog.Domain.Events;
@@ -8,6 +6,7 @@ using Hydra.Catalog.Domain.Interfaces.Services;
 using Hydra.Catalog.Domain.Services;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Hydra.Core.Communication.Mediator;
 
 namespace Hydra.Catalog.API.Setup
 {
@@ -15,7 +14,7 @@ namespace Hydra.Catalog.API.Setup
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            //Domain Bus (Mediator)
+            //Mediator
             services.AddScoped<IMediatorHandler, MediatorHandler>();
 
             //Catalog
