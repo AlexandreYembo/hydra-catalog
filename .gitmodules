@@ -1,3 +1,6 @@
 [submodule "hydra-core"]
 	path = hydra-core
 	url = https://github.com/AlexandreYembo/hydra-core
+[submodule "hydra-eventsourcing"]
+	path = hydra-eventsourcing
+	url = https://github.com/AlexandreYembo/hydra-eventsourcing
