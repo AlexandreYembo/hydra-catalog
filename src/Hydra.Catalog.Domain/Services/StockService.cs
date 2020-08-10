@@ -49,7 +49,7 @@ namespace Hydra.Catalog.Domain.Services
 
             if(product.Qty < 10)
             {
-                await _bus.PublishEvent(new ProductLowStockEvent(product.Id, product.Qty));
+                await _bus.PublishDomainEvent(new ProductLowStockEvent(product.Id, product.Qty));
             }
 
             _productRepository.Update(product);

@@ -7,6 +7,8 @@ using Hydra.Catalog.Domain.Services;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Hydra.Core.Communication.Mediator;
+using Hydra.EventSourcing;
+using Hydra.Core.Data.EventSourcing;
 
 namespace Hydra.Catalog.API.Setup
 {
@@ -25,6 +27,10 @@ namespace Hydra.Catalog.API.Setup
             //it is resolving a type of INotificationHandler for this event [ProductLowStockEvent]
             //Everytime this event is trigger it will call ProductEventHandler, but only for events that implements this Event 
             services.AddScoped<INotificationHandler<ProductLowStockEvent>, ProductEventHandler>();
+
+            //Event sourcing
+            services.AddSingleton<IEventStoreService, EventStoreService>();
+            services.AddSingleton<IEventSourcingRepository, EventSourcingRepository>();
         }
     }
 }
