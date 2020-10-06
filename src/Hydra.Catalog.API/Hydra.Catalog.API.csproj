@@ -5,17 +5,20 @@
     <ProjectReference Include="..\Hydra.Catalog.Domain\Hydra.Catalog.Domain.csproj" />
     <ProjectReference Include="..\..\hydra-eventsourcing\Hydra.EventSourcing\Hydra.EventSourcing.csproj" />
     <ProjectReference Include="..\..\hydra-core\Hydra.Core\Hydra.Core.csproj" />
+    <ProjectReference Include="..\..\hydra-core\Hydra.WebAPI.Core\Hydra.WebAPI.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="automapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.sqlserver" Version="3.1.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <PropertyGroup>

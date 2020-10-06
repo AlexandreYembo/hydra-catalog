@@ -22,7 +22,7 @@ namespace Hydra.Catalog.Data
         {
            foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                 e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
-                property.SetColumnType("varchar(100)"); // avoid do create any column NVarchar(MAX)
+                property.SetColumnType("varchar(100)"); // If I forgot to map any context, it will avoid do create any column NVarchar(MAX)
 
 
             modelBuilder.Ignore<Event>();

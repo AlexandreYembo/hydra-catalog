@@ -27,7 +27,11 @@ namespace Hydra.Catalog.Data.Repository
 
         public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            return await _context.Products.AsNoTracking().ToListAsync();
+            var result = await _context.Products.AsNoTracking()
+                                          .Include(p => p.Category)
+                                          .ToListAsync();
+
+            return result;
         }
 
         public async Task<IEnumerable<Category>> GetCategories()
@@ -35,11 +39,17 @@ namespace Hydra.Catalog.Data.Repository
             return await _context.Categories.AsNoTracking().ToListAsync();
         }
 
+        public async Task<Category> GetCategoryById(Guid id)
+        {
+            return await _context.Categories.FindAsync(id);
+        }
+
         public async Task<IEnumerable<Product>> GetProductByCategory(int code)
         {
             return await _context.Products.AsNoTracking()
                                           .Include( p => p.Category)
-                                          .Where(c => c.Category.Code == code).ToListAsync();
+                                          .Where(c => c.Category.Code == code)
+                                          .ToListAsync();
         }
 
         public async Task<Product> GetProductById(Guid id)
@@ -48,7 +58,9 @@ namespace Hydra.Catalog.Data.Repository
             var product = await _context.Products.FindAsync(id);
               if(product != null)
                 await _context.Entry(product)
-                    .Reference(c => c.Category).LoadAsync();
+                              .Reference(c => c.Category)
+                              .LoadAsync();
+
             return product;
         }
 

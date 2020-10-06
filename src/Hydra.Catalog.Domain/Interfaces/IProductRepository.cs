@@ -13,6 +13,8 @@ namespace Hydra.Catalog.Domain.Interfaces
         Task<IEnumerable<Product>> GetProductByCategory(int code);
         Task<IEnumerable<Category>> GetCategories();
 
+        Task<Category> GetCategoryById(Guid id);
+
         void Insert(Product product);
         void Update(Product product);
         

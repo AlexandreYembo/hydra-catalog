@@ -36,5 +36,10 @@ namespace Hydra.Catalog.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<CategoryDto>> GetCategories() => 
             _mapper.Map<IEnumerable<CategoryDto>>(await _productRepository.GetCategories());
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<CategoryDto> GetCategory(Guid id) => 
+            _mapper.Map<CategoryDto>(await _productRepository.GetCategoryById(id));
     }
 }

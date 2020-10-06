@@ -46,6 +46,6 @@ namespace Hydra.Catalog.API.Models
         [Required(ErrorMessage="The field {0} is required")]
         public decimal Length { get; set; }
 
-        public IEnumerable<CategoryDto> Categories { get; set; }
+        public CategoryDto Category { get; set; }
     }
 }

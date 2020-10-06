@@ -8,10 +8,13 @@ using Hydra.Catalog.Domain.Interfaces;
 using Hydra.Catalog.Domain.Interfaces.Services;
 using Hydra.Catalog.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Hydra.WebAPI.Core.Identity;
 
 namespace Hydra.Catalog.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class ProductController : ControllerBase, IDisposable
     {
@@ -26,19 +29,19 @@ namespace Hydra.Catalog.API.Controllers
             _stockService = stockService;
         }
 
+        [ClaimsAuthorize("catalog", "read")]
         [HttpGet]
         [Route("{id}")]
         public async Task<ProductDto> GetProductById(Guid id) => 
             _mapper.Map<ProductDto>(await _productRepository.GetProductById(id));
 
+        [AllowAnonymous]
         [HttpGet]
-        [Route("all")]
-        public async Task<IEnumerable<ProductDto>> GetAllProducts(){
-            var products = await _productRepository.GetAllProducts();
-            return _mapper.Map<IEnumerable<ProductDto>>(products);
-        } 
+        public async Task<IEnumerable<ProductDto>> GetAllProducts() =>
+            _mapper.Map<IEnumerable<ProductDto>>(await _productRepository.GetAllProducts());
 
         [HttpGet]
+        [Route("category")]
         public async Task<IEnumerable<ProductDto>> GetProductByCategory(int code) => 
             _mapper.Map<IEnumerable<ProductDto>>(await _productRepository.GetProductByCategory(code));
 
