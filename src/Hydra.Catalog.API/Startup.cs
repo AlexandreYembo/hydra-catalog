@@ -15,8 +15,7 @@ namespace Hydra.Catalog.API
 
         public Startup(IHostEnvironment hostEnvironment)
         {
-           Configuration.AddHostEnvironment(hostEnvironment);
-
+             Configuration = HostEnvironmentConfiguration.AddHostEnvironment(hostEnvironment);
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
