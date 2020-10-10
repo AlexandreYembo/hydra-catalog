@@ -1,5 +1,6 @@
 using Hydra.Catalog.API.Setup;
 using Hydra.WebAPI.Core.Identity;
+using Hydra.WebAPI.Core.Setups;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,16 +15,8 @@ namespace Hydra.Catalog.API
 
         public Startup(IHostEnvironment hostEnvironment)
         {
-            var builder = new ConfigurationBuilder()
-                                .SetBasePath(hostEnvironment.ContentRootPath)
-                                .AddJsonFile("appsettings.json", true, true)
-                                .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
-                                .AddEnvironmentVariables();
+           Configuration.AddHostEnvironment(hostEnvironment);
 
-            // if(hostEnvironment.IsDevelopment())
-            //     builder.AddUserSecrets<Startup>();
-
-            Configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
