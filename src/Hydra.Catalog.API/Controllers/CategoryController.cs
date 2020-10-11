@@ -5,13 +5,13 @@ using AutoMapper;
 using Hydra.Catalog.API.Models;
 using Hydra.Catalog.Domain.Interfaces;
 using Hydra.Catalog.Entities.Models;
+using Hydra.WebAPI.Core.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hydra.Catalog.API.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
-    public class CategoryController : ControllerBase
+    public class CategoryController : MainController
     {
          private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;

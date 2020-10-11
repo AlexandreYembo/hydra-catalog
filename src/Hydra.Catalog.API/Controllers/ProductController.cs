@@ -10,13 +10,13 @@ using Hydra.Catalog.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Hydra.WebAPI.Core.Identity;
+using Hydra.WebAPI.Core.Controllers;
 
 namespace Hydra.Catalog.API.Controllers
 {
-    [ApiController]
     [Authorize]
     [Route("[controller]")]
-    public class ProductController : ControllerBase, IDisposable
+    public class ProductController : MainController, IDisposable
     {
         private readonly IProductRepository _productRepository;
         private readonly IStockService _stockService;
