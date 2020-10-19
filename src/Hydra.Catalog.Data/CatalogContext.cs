@@ -5,6 +5,7 @@ using Hydra.Core.Data;
 using Hydra.Catalog.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Hydra.Core.Messages;
+using FluentValidation.Results;
 
 namespace Hydra.Catalog.Data
 {
@@ -20,12 +21,13 @@ namespace Hydra.Catalog.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Ignore<ValidationResult>();
+            modelBuilder.Ignore<Event>();
+
            foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                 e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
                 property.SetColumnType("varchar(100)"); // If I forgot to map any context, it will avoid do create any column NVarchar(MAX)
 
-
-            modelBuilder.Ignore<Event>();
                 //Does not need to add map for each element, new EF supports
                 //It will find all entities and mapping defined on DbSet<TEntity> via reflection
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogContext).Assembly);
