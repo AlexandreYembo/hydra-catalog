@@ -20,5 +20,6 @@ namespace Hydra.Catalog.Domain.Interfaces
         
         void Insert(Category category);
         void Upddate(Category category);
+        Task<List<Product>> GetProductsById(string ids);
     }
 }

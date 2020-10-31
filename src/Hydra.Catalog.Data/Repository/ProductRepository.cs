@@ -64,6 +64,20 @@ namespace Hydra.Catalog.Data.Repository
             return product;
         }
 
+        public async Task<List<Product>> GetProductsById(string ids)
+        {
+            var idsGuid = ids.Split(',')
+                            .Select(id => (IsValid: Guid.TryParse(id, out var x), Value: x));
+
+            if (!idsGuid.All(nid => nid.IsValid)) return new List<Product>();
+
+            var idsValue = idsGuid.Select(id => id.Value);
+
+            return await _context.Products.AsNoTracking()
+                            .Where(p => idsValue.Contains(p.Id) && p.Active)
+                            .ToListAsync();
+        }
+
         public void Insert(Product product)
         {
             _context.Products.Add(product);

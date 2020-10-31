@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hydra.Catalog.Domain\Hydra.Catalog.Domain.csproj" />
-    <ProjectReference Include="..\..\hydra-core\Hydra.Core\Hydra.Core.csproj" />
+    <ProjectReference Include="..\..\hydra-core\dotnet3.1\Hydra.Core\Hydra.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

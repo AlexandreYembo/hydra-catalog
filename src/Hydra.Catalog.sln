@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra.Catalog.Data", "Hydra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra.Catalog.Domain", "Hydra.Catalog.Domain\Hydra.Catalog.Domain.csproj", "{6F40A522-32EC-4251-B272-2FC0B1B76B1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra.Core", "..\hydra-core\Hydra.Core\Hydra.Core.csproj", "{470F4915-147E-4E06-8777-8EBA53898E74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra.Core", "..\hydra-core\dotnet3.1\Hydra.Core\Hydra.Core.csproj", "{470F4915-147E-4E06-8777-8EBA53898E74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra.EventSourcing", "..\hydra-eventsourcing\Hydra.EventSourcing\Hydra.EventSourcing.csproj", "{F032ECB4-76A8-4C67-BA36-B791BB55B8E0}"
 EndProject
@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{AD905BB0-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B924AEE0-0500-11EB-9983-5F44FE8EC6DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra.WebAPI.Core", "..\hydra-core\Hydra.WebAPI.Core\Hydra.WebAPI.Core.csproj", "{ECF3E746-7143-4C37-90A0-DD96C5EC995A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra.WebAPI.Core", "..\hydra-core\dotnet3.1\Hydra.WebAPI.Core\Hydra.WebAPI.Core.csproj", "{ECF3E746-7143-4C37-90A0-DD96C5EC995A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

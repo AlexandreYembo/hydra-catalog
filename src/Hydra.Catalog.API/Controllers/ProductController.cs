@@ -35,6 +35,12 @@ namespace Hydra.Catalog.API.Controllers
         public async Task<ProductDto> GetProductById(Guid id) => 
             _mapper.Map<ProductDto>(await _productRepository.GetProductById(id));
 
+        [ClaimsAuthorize("catalog", "read")]
+        [HttpGet]
+        [Route("list/{id}")]
+        public async Task<List<ProductDto>> GetListById(string id) =>
+            _mapper.Map<List<ProductDto>>(await _productRepository.GetProductsById(id));
+
         [AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<ProductDto>> GetAllProducts() =>

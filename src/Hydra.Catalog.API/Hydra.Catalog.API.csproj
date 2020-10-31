@@ -4,8 +4,8 @@
     <ProjectReference Include="..\Hydra.Catalog.Data\Hydra.Catalog.Data.csproj" />
     <ProjectReference Include="..\Hydra.Catalog.Domain\Hydra.Catalog.Domain.csproj" />
     <ProjectReference Include="..\..\hydra-eventsourcing\Hydra.EventSourcing\Hydra.EventSourcing.csproj" />
-    <ProjectReference Include="..\..\hydra-core\Hydra.Core\Hydra.Core.csproj" />
-    <ProjectReference Include="..\..\hydra-core\Hydra.WebAPI.Core\Hydra.WebAPI.Core.csproj" />
+    <ProjectReference Include="..\..\hydra-core\dotnet3.1\Hydra.Core\Hydra.Core.csproj" />
+    <ProjectReference Include="..\..\hydra-core\dotnet3.1\Hydra.WebAPI.Core\Hydra.WebAPI.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
