@@ -70,13 +70,13 @@ namespace Hydra.Catalog.Entities.Models
 
         public void RemoveStock(int qty)
         {
-            if (qty < 0) qty *= -1;
-            if(!HasStock(qty)) throw new DomainException("Stock is insuficient");
-            Qty -= qty;
+            if (Qty >= qty)
+                Qty -= qty;
         }
 
         public bool HasStock(int qty) => Qty >= qty;
 
+        public bool IsAvailable(int quantity) => Active && HasStock(quantity);
         public void IsValid()
         {
             AssertionConcern.ValidateEmpty(Name, "The field product name can't be empty");
