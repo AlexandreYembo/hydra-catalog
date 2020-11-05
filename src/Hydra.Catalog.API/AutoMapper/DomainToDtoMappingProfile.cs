@@ -1,6 +1,7 @@
 using System;
 using AutoMapper;
 using Hydra.Catalog.API.Models;
+using Hydra.Catalog.Domain;
 using Hydra.Catalog.Entities.Models;
 
 namespace Hydra.Catalog.API.AutoMapper

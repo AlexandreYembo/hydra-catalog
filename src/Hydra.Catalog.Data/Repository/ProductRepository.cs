@@ -6,6 +6,8 @@ using Hydra.Core.Data;
 using Hydra.Catalog.Domain.Interfaces;
 using Hydra.Catalog.Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Hydra.Catalog.Domain;
+using Dapper;
 
 namespace Hydra.Catalog.Data.Repository
 {
@@ -25,13 +27,29 @@ namespace Hydra.Catalog.Data.Repository
 
         //AsNoTracking -> use to less consume of EF resource
 
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<PagedResult<Product>> GetAllProducts(int pageSize, int pageIndex, string query = null)
         {
-            var result = await _context.Products.AsNoTracking()
-                                          .Include(p => p.Category)
-                                          .ToListAsync();
+            var sql = @$"SELECT * FROM Products 
+                        WHERE (@Name IS NULL OR Name LIKE '%' + @Name + '%')
+                        ORDER BY [Name]
+                        OFFSET {pageSize * (pageIndex -1)} ROWS
+                        FETCH NEXT {pageSize} ROWS ONLY
+                        SELECT COUNT(Id) FROM Products
+                        WHERE (@Name IS NULL OR Name LIKE '%' + @Name + '%')";
+            
+            var multi = await _context.Database.GetDbConnection()
+                                               .QueryMultipleAsync(sql, new { Name = query});
+            var products = multi.Read<Product>();
+            var total = multi.Read<int>().FirstOrDefault();
 
-            return result;
+            return new PagedResult<Product>()
+            {
+                List = products,
+                TotalResult = total,
+                PageIndex = pageIndex,
+                PageSize = pageSize,
+                Query = query
+            };
         }
 
         public async Task<IEnumerable<Category>> GetCategories()

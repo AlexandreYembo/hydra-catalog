@@ -8,7 +8,7 @@ namespace Hydra.Catalog.Domain.Interfaces
 {
     public interface IProductRepository : IRepository<Product>
     {
-        Task<IEnumerable<Product>> GetAllProducts();
+        Task<PagedResult<Product>> GetAllProducts(int pageSize, int pageIndex, string query = null);
         Task<Product> GetProductById(Guid id);
         Task<IEnumerable<Product>> GetProductByCategory(int code);
         Task<IEnumerable<Category>> GetCategories();
