@@ -7,8 +7,6 @@ using Hydra.Catalog.Domain.Services;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Hydra.Core.Communication.Mediator;
-using Hydra.EventSourcing;
-using Hydra.Core.Data.EventSourcing;
 
 namespace Hydra.Catalog.API.Setup
 {

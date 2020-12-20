@@ -21,7 +21,7 @@ namespace Hydra.Catalog.API.Setup
             services.AddControllers();
 
             services.AddCors(options =>{
-                options.AddPolicy("Catalog", builder =>
+                options.AddPolicy("Auth", builder =>
                     builder.AllowAnyOrigin()
                             .AllowAnyMethod()
                             .AllowAnyHeader());
@@ -45,7 +45,7 @@ namespace Hydra.Catalog.API.Setup
 
             app.UseRouting();
 
-            app.UseCors("Catalog");
+            app.UseCors("Auth");
 
             app.UseAuthConfiguration();
 

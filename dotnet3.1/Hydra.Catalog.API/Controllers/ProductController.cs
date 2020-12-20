@@ -29,20 +29,21 @@ namespace Hydra.Catalog.API.Controllers
             _stockService = stockService;
         }
 
-        [ClaimsAuthorize("catalog", "read")]
+    //    [ClaimsAuthorize("catalog", "read")]
         [HttpGet]
-        [Route("catalog/products/{id}")]
+        [Route("{id}")]
         public async Task<ProductDto> GetProductById(Guid id) => 
             _mapper.Map<ProductDto>(await _productRepository.GetProductById(id));
 
-        [ClaimsAuthorize("catalog", "read")]
+      //  [ClaimsAuthorize("catalog", "read")]
         [HttpGet]
         [Route("list/{id}")]
         public async Task<List<ProductDto>> GetListById(string id) =>
             _mapper.Map<List<ProductDto>>(await _productRepository.GetProductsById(id));
 
-        [AllowAnonymous]
-        [HttpGet("catalog/products")]
+        // [AllowAnonymous]
+        //[ClaimsAuthorize("catalog", "read")]
+        [HttpGet]
         public async Task<PagedResultDto<ProductDto>> GetAllProducts([FromQuery] int pageSize = 8, [FromQuery] int page = 1, [FromQuery] string query = null){
             var result = await _productRepository.GetAllProducts(pageSize, page, query);
             return new PagedResultDto<ProductDto>(_mapper.Map<IEnumerable<ProductDto>>(result.List), result.TotalResult, result.PageIndex, result.PageSize, result.Query);
